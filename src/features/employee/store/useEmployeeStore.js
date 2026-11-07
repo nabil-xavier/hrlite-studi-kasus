@@ -54,6 +54,19 @@ export const useEmployeeStore = create((set, get) => ({
         hasError: false,
       });
 
+      // Jika id employee ada pada list employee, maka ambil dari situ
+      const employeeInStore = get().listEmployee.find(
+        (employee) => employee.id === id,
+      );
+
+      if (employeeInStore) {
+        set({
+          selectedEmployee: employeeInStore,
+        });
+
+        return;
+      }
+
       const response = await getEmployeeDetailApi(id);
 
       set({
@@ -119,7 +132,6 @@ export const useEmployeeStore = create((set, get) => ({
         ],
         total: state.total + 1,
       }));
-
     } catch (error) {
       set({ hasError: true });
       throw error;
@@ -148,7 +160,6 @@ export const useEmployeeStore = create((set, get) => ({
               }
             : state.selectedEmployee,
       }));
-
     } catch (error) {
       set({ hasError: true });
       throw error;
