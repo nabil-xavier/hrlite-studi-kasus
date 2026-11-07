@@ -1,16 +1,96 @@
-# React + Vite
+## Tech Stack
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- React 19
+- Vite
+- Tailwind CSS
+- Zustand
+- React Router DOM
+- Shadcn UI
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Cara Menjalankan
 
-## React Compiler
+Install dependency:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+bun install
+```
 
-## Expanding the ESLint configuration
+Jalankan development server:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+bun dev
+```
+
+Build production:
+
+```bash
+bun run build
+```
+
+Lint:
+
+```bash
+bun run lint
+```
+
+Format kode:
+
+```bash
+bun run format
+```
+
+## Fitur yang Selesai
+
+### Level 1
+
+- ✅ List Karyawan
+- ✅ Search Employee
+- ✅ Detail Employee
+
+### Level 2
+
+- ✅ Tambah Karyawan
+- ✅ Ubah Karyawan
+- ✅ Hapus Karyawan
+- ✅ Filter Departemen
+
+
+## Struktur State Management
+
+### useEmployeeStore
+
+State yang hanya digunakan oleh fitur Employee ditempatkan pada store fitur
+
+Contoh:
+- listEmployee
+- selectedEmployee
+- page
+- keyword
+- selectedDepartment
+- editingEmployee
+- isFormOpen
+
+Alasan:
+State tersebut hanya digunakan pada modul Employee sehingga tidak perlu ditempatkan di global store
+
+
+### useState
+
+Digunakan untuk state yang bersifat lokal dan hanya dipakai oleh satu komponen
+
+Contoh:
+
+- nilai input pencarian sebelum debounce
+- status dialog hapus
+- employee yang sedang dipilih untuk dihapus
+
+Alasan:
+State lokal tidak perlu dimasukkan ke Zustand untuk menghindari kompleksitas yang tidak diperlukan
+
+
+## Kendala yang Ditemui
+
+- DummyJSON tidak menyimpan perubahan data secara permanen sehingga perubahan create, update, dan delete harus disinkronkan ke Zustand Store agar UI tetap konsisten
+- Pagination sempat kembali ke halaman pertama karena perubahan keyword memicu reset page
+- Data hasil update dapat tertimpa oleh response API ketika berpindah halaman sehingga diperlukan sinkronisasi state lokal
