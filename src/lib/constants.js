@@ -1,0 +1,16 @@
+export const EMPLOYEE_DEPARTMENTS = [
+  "Engineering",
+  "Research and Development",
+  "Human Resources",
+  "Product",
+  "Management",
+  "Marketing",
+  "Accounting",
+  "Training",
+  "Support",
+  "Services",
+  "Legal",
+  "Sales",
+  "Business",
+  "Development",
+];
