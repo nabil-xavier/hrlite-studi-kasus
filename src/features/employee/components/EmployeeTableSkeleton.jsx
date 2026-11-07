@@ -65,6 +65,6 @@ const EmployeeTableSkeleton = () => {
       </div>
     </div>
   );
-}
+};
 
 export default EmployeeTableSkeleton;

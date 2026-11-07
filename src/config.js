@@ -1,3 +1,3 @@
-const BASE_URL = "https://dummyjson.com"
+const BASE_URL = "https://dummyjson.com";
 
-export { BASE_URL }
+export { BASE_URL };

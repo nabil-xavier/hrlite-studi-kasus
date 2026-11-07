@@ -46,6 +46,6 @@ const EmployeeFilter = () => {
       </SelectContent>
     </Select>
   );
-}
+};
 
 export default EmployeeFilter;

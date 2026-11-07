@@ -39,10 +39,7 @@ const DeleteEmployeeDialog = ({ employee, open, onOpenChange }) => {
         <AlertDialogFooter>
           <AlertDialogCancel>Batal</AlertDialogCancel>
 
-          <AlertDialogAction
-            onClick={handleDelete}
-            className="bg-destructive"
-          >
+          <AlertDialogAction onClick={handleDelete} className="bg-destructive">
             Hapus
           </AlertDialogAction>
         </AlertDialogFooter>
