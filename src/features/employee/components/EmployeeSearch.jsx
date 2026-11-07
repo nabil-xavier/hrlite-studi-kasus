@@ -11,8 +11,10 @@ const EmployeeSearch = () => {
   const debouncedKeyword = useDebounce(search);
 
   useEffect(() => {
-    onSetKeyword(debouncedKeyword);
-  }, [debouncedKeyword, onSetKeyword]);
+    if (debouncedKeyword !== keyword) {
+      onSetKeyword(debouncedKeyword);
+    }
+  }, [debouncedKeyword, keyword, onSetKeyword]);
 
   return (
     <Input
