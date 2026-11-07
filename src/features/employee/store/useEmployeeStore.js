@@ -86,12 +86,12 @@ export const useEmployeeStore = create((set, get) => ({
   },
 
   // Ubah keyword dan reset page ke 1
-  onSetKeyword: async (keyword) => {
+  onSetKeyword: (keyword) => {
     set({ keyword, page: 1 });
   },
 
   // Ubah filter departemen
-  onSetSelectedDepartment: async (dept) => {
+  onSetSelectedDepartment: (dept) => {
     set({ selectedDepartment: dept });
   },
 

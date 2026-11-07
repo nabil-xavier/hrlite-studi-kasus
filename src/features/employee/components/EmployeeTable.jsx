@@ -1,6 +1,5 @@
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useShallow } from "zustand/react/shallow";
 import { useEmployeeStore } from "@/features/employee/store/useEmployeeStore";
 import DeleteEmployeeDialog from "@/features/employee/components/DeleteEmployeeDialog";
 import {
@@ -23,11 +22,7 @@ const EmployeeTable = () => {
   const selectedDepartment = useEmployeeStore(
     (state) => state.selectedDepartment,
   );
-  const { onOpenForm } = useEmployeeStore(
-    useShallow((state) => ({
-      onOpenForm: state.onOpenForm,
-    })),
-  );
+  const onOpenForm = useEmployeeStore((state) => state.onOpenForm);
 
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [selectedEmployee, setSelectedEmployee] = useState(null);
@@ -117,7 +112,7 @@ const EmployeeTable = () => {
             disabled={page === 1}
             onClick={() => onSetPage(page - 1)}
           >
-            Berikutnya
+            Sebelumnya
           </Button>
 
           <span className="flex items-center px-2">

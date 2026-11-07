@@ -1,8 +1,6 @@
 import { useEffect } from "react";
-import { useShallow } from "zustand/shallow";
 import EmployeeTable from "@/features/employee/components/EmployeeTable";
 import EmployeeFormDialog from "@/features/employee/components/EmployeeFormDialog";
-import DeleteEmployeeDialog from "@/features/employee/components/DeleteEmployeeDialog";
 import ErrorState from "@/features/employee/components/ErrorState";
 import EmployeeTableSkeleton from "@/features/employee/components/EmployeeTableSkeleton";
 import EmployeeFilter from "@/features/employee/components/EmployeeFilter";
@@ -19,11 +17,7 @@ const Employee = () => {
   const onGetListEmployee = useEmployeeStore(
     (state) => state.onGetListEmployee,
   );
-  const { onOpenForm } = useEmployeeStore(
-    useShallow((state) => ({
-      onOpenForm: state.onOpenForm,
-    })),
-  );
+  const onOpenForm = useEmployeeStore((state) => state.onOpenForm);
 
   useEffect(() => {
     onGetListEmployee();
@@ -53,7 +47,6 @@ const Employee = () => {
 
       <EmployeeTable />
       <EmployeeFormDialog />
-      <DeleteEmployeeDialog />
     </>
   );
 };
