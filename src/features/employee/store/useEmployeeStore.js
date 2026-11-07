@@ -120,7 +120,6 @@ export const useEmployeeStore = create((set, get) => ({
         total: state.total + 1,
       }));
 
-      get().oncloseForm();
     } catch (error) {
       set({ hasError: true });
       throw error;
@@ -150,7 +149,6 @@ export const useEmployeeStore = create((set, get) => ({
             : state.selectedEmployee,
       }));
 
-      get().oncloseForm();
     } catch (error) {
       set({ hasError: true });
       throw error;
